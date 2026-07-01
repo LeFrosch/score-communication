@@ -1,25 +1,16 @@
 // Demo program built for both QNX and Linux via the platform_transition_binary
 // targets in the BUILD file (:main_qnx and :main_gcc).
 
-#include "score/mw/com/types.h"
-
-#include <sys/utsname.h>
-
-#include <cstdint>
 #include <cstdlib>
 #include <iostream>
 #include <string_view>
 
-// ---------------------------------------------------------------------------
 // Platform-specific includes. Only the active branch is compiled, and in the
 // IDE only the selected toolchain's headers resolve.
-// ---------------------------------------------------------------------------
 #if defined(__QNX__)
 #include <sys/neutrino.h>  // ClockCycles()
-#include <sys/syspage.h>   // SYSPAGE_ENTRY, cycles-per-second
 #else
 #include <time.h>    // clock_gettime()
-#include <unistd.h>  // sysconf()
 #endif
 
 namespace
@@ -51,17 +42,6 @@ std::uint64_t MonotonicTicks() noexcept
 
 int main()
 {
-    // Exercise the //score/mw/com dependency: linking this already pulls in the
-    // platform-specific middleware binding selected by the transition.
-    const auto instance_specifier =
-        score::mw::com::InstanceSpecifier::Create(std::string{"score/transition/DemoInstance"});
-    if (!instance_specifier.has_value())
-    {
-        std::cerr << "Failed to create InstanceSpecifier: " << instance_specifier.error() << '\n';
-        return EXIT_FAILURE;
-    }
-
-    std::cout << "mw::com InstanceSpecifier: " << instance_specifier.value().ToString() << '\n';
     std::cout << "Compiled for: " << kPlatformName << '\n';
 
     const std::uint64_t t0 = MonotonicTicks();
