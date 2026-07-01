@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "C/C++test",
+          "semanticVersion": "2025.2.0",
+          "rules": [
+            {
+              "id": "OPT-14",
+              "name": "Pass objects by reference instead of by value",
+              "shortDescription": {
+                "text": "Pass objects by reference instead of by value"
+              },
+              "fullDescription": {
+                "text": "Pass objects by reference instead of by value [OPT-14]"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "text": "Pass objects by reference instead of by value [OPT-14]"
+              },
+              "properties": {
+                "tags": [
+                  "Optimization"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "OPT-14",
+          "level": "warning",
+          "message": {
+            "text": "The parameter 'configuration_path' of function 'RuntimeConfiguration' is passed by value"
+          },
+          "partialFingerprints": {
+            "lineHash": "1503254167"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../../score/mw/com/runtime_configuration.cpp",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 61,
+                  "endColumn": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OPT-14",
+          "level": "warning",
+          "message": {
+            "text": "The parameter 'command_line_args' of function 'ParseConfigurationPath' is passed by value"
+          },
+          "partialFingerprints": {
+            "lineHash": "-902491900"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../../score/mw/com/runtime_configuration.cpp",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 56,
+                  "endColumn": 57
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "originalUriBaseIds": {
+        "SRCROOT": {
+          "uri": "file:///home/daniel_brauner/Projects/bazel/tests/communication/"
+        }
+      }
+    }
+  ]
+}
