@@ -1,4 +1,9 @@
 directories:
   .
+  -.devcontainer
+  -.vscode
 
-derive_targets_from_directories: true
+derive_targets_from_directories: false
+
+targets:
+  //score/...

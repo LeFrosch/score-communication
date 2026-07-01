@@ -1,0 +1,19 @@
+directories:
+  .
+  -.devcontainer
+  -.vscode
+
+targets:
+  //third_party/clion/transition:main_qnx
+  //third_party/clion/transition:main_gcc
+
+build_flags:
+  # gcc toolchain config
+  --platforms=@score_bazel_platforms//:x86_64-linux-gcc_12.2.0-posix
+  --extra_toolchains=@score_gcc_x86_64_toolchain//:x86_64-linux
+
+  # qnx toolchain config
+  --platforms=@score_bazel_platforms//:x86_64-qnx-sdp_8.0.0-posix
+  --extra_toolchains=@score_qnx_x86_64_ifs_toolchain//:ifs-x86_64-qnx-sdp_8.0.0
+  --extra_toolchains=@score_qcc_x86_64_toolchain//:x86_64-qnx-sdp_8.0.0
+  --credential_helper=*.qnx.com=%workspace%/third_party/qnx_credential_helper.py

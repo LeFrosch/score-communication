@@ -1,5 +1,4 @@
 import third_party/clion/default.bazelproject
 
 build_flags:
-  --compilation_mode=dbg
-  --sandbox_default_allow_network
+  --config=qnx
